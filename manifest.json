@@ -1,0 +1,10 @@
+{
+  "name": "external event bot chrome extension",
+  "description": "send an event information to the slack channel through slack's incoming webhook",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": ["activeTab"]
+}
