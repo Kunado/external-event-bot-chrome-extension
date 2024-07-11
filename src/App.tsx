@@ -60,6 +60,13 @@ const SendButton = styled(Button)({
   textTransform: 'none',
 })
 
+const validateExternalEvent = (externalEvent: ExternalEvent) => {
+  return externalEvent.url !== ''
+    && externalEvent.title !== ''
+    && externalEvent.date !== ''
+    && externalEvent.location !== ''
+}
+
 const App = () => {
   const [externalEvent, setExternalEvent] = useState<ExternalEvent>(defaultExternalEvent)
 
@@ -113,7 +120,7 @@ const App = () => {
           margin="dense"
           fullWidth
         />
-        <SendButton variant="outlined" onClick={async () => { await postExternalEventToSlack(externalEvent) }} endIcon={<SendIcon />} disableRipple>
+        <SendButton variant="outlined" disabled={!validateExternalEvent(externalEvent)} onClick={async () => { await postExternalEventToSlack(externalEvent) }} endIcon={<SendIcon />} disableRipple>
           Send
         </SendButton>
       </Container>
