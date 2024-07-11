@@ -6,5 +6,16 @@
   "action": {
     "default_popup": "index.html"
   },
-  "permissions": ["activeTab"]
+  "permissions": [
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://hooks.slack.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.connpass.com/*"],
+      "js": ["src/content_scripts/connpass.ts"]
+    }
+  ]
 }
